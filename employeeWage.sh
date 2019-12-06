@@ -1,17 +1,22 @@
 #!/bin/bash/ -x
 echo "Welcome to Employee"
-employeeCheck=$(( RANDOM % 2 ))
+employeeCheck=$(( RANDOM % 3 ))
 WagePerHrs=20
 FullWorkHrs=8
 HalfWorkHrs=4
-if [[ $employeeCheck -eq 1 ]]
-then
-
-	echo "Employee Present"
-   DailyWage=$(( $WagePerHrs * $WorkHrs ))
-	echo $DailyWage
-else
-	echo "Employee Absent"
-fi
-
+FullDay=1
+HalfDay=0
+echo $employeeCheck
+case $employeeCheck in
+		$FullDay)
+			echo "Employee Present FullTime"
+			 DailyWage=$(( $WagePerHrs * $FullWorkHrs ))
+      	echo $DailyWage ;;
+		$HalfDay)
+			 echo "Employee Present HalfTime"
+			 DailyWage=$(( $WagePerHrs * $HalfWorkHrs ))
+      	 echo $DailyWage ;;
+		*)
+			echo "Employee absent"
+esac
 
