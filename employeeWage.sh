@@ -2,7 +2,8 @@
 echo "Welcome to Employee"
 employeeCheck=$(( RANDOM % 2 ))
 WagePerHrs=20
-WorkHrs=8
+FullWorkHrs=8
+HalfWorkHrs=4
 if [[ $employeeCheck -eq 1 ]]
 then
 
