@@ -33,17 +33,30 @@ count=0
 
 echo "Welcome to Employee"
 
+declare -A storeWage
+
 while [[ $day -le $WorkDay && $Hours -lt 100 ]]
 do
 	employeeCheck=$(( RANDOM % 3 ))
 	workingHrs="$( getWorkHrs $employeeCheck )"
 	DailyWage=$(( $WagePerHrs * $workingHrs ))
-	StoreDailyWage[(( count++ ))]=$DailyWage
+	
+	#StoreDailyWage[(( count++ ))]=$DailyWage
 	totalWage=$(( $DailyWage * $WorkDay ))
-	totalMonthWage[(( count++ ))]=$totalWage
+	storeWage["day_$day"]="$DailyWage	$totalWage"
+	#totalMonthWage[(( count++ ))]=$totalWage
 	Hours=$(( $Hours + $workingHrs))
 	day=$(( $day +1 ))
 done
-echo $Hours
-echo "${StoreDailyWage[@]}"
-echo "${totalMonthWage[@]}"
+
+#echo $Hours
+#echo "${StoreDailyWage[@]}"
+#echo "${totalMonthWage[@]}"
+
+len=${#storeWage[@]}
+echo $len
+
+for(( i=0; i<$len; i++ ))
+do
+	echo "day $i	 ${storeWage[day_$i]}"
+done
