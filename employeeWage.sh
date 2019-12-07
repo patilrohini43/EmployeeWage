@@ -29,6 +29,7 @@ Hours=0
 Day=1
 FullDay=1
 HalfDay=0
+count=0
 
 echo "Welcome to Employee"
 
@@ -37,7 +38,12 @@ do
 	employeeCheck=$(( RANDOM % 3 ))
 	workingHrs="$( getWorkHrs $employeeCheck )"
 	DailyWage=$(( $WagePerHrs * $workingHrs ))
+	StoreDailyWage[(( count++ ))]=$DailyWage
+	totalWage=$(( $DailyWage * $WorkDay ))
+	totalMonthWage[(( count++ ))]=$totalWage
 	Hours=$(( $Hours + $workingHrs))
 	day=$(( $day +1 ))
 done
 echo $Hours
+echo "${StoreDailyWage[@]}"
+echo "${totalMonthWage[@]}"
