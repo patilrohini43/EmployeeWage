@@ -12,11 +12,15 @@ case $employeeCheck in
 		$FullDay)
 			echo "Employee Present FullTime"
 			 DailyWage=$(( $WagePerHrs * $FullWorkHrs ))
-      	echo $DailyWage ;;
+			 MonthlyWage=$(( $WorkDay * $DailyWage ))
+      	 echo $DailyWage
+			 echo $MonthlyWage ;;
 		$HalfDay)
 			 echo "Employee Present HalfTime"
 			 DailyWage=$(( $WagePerHrs * $HalfWorkHrs ))
-      	 echo $DailyWage ;;
+			 MonthlyWage=$(( $WorkDay * $DailyWage ))
+      	 echo $DailyWage
+			 echo $MonthlyWage  ;;
 		*)
 			echo "Employee absent"
 esac
