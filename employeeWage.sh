@@ -2,6 +2,7 @@
 echo "Welcome to Employee"
 employeeCheck=$(( RANDOM % 3 ))
 WagePerHrs=20
+WorkDay=20
 FullWorkHrs=8
 HalfWorkHrs=4
 FullDay=1
