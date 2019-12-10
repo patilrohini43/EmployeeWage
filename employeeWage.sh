@@ -6,10 +6,10 @@ function getWorkHrs()
 
 employeeCheck=$1
 case $employeeCheck in
-		$FullDay)
+		$fullDay)
 			 echo $FullWorkHrs
 			 ;;
-		$HalfDay)
+		$halfDay)
 			 echo $HalfWorkHrs
 			  ;;
 		*)
@@ -25,33 +25,29 @@ WagePerHrs=20
 WorkDay=20
 FullWorkHrs=8
 HalfWorkHrs=4
-Hours=0
-Day=1
-FullDay=1
-HalfDay=0
+
+hours=0
+day=1
+fullDay=1
+halfDay=0
 count=0
 
 echo "Welcome to Employee"
 
 declare -A storeWage
 
-while [[ $day -le $WorkDay && $Hours -lt 100 ]]
+while [[ $day -le $workDay && $hours -lt 100 ]]
 do
 	employeeCheck=$(( RANDOM % 3 ))
 	workingHrs="$( getWorkHrs $employeeCheck )"
-	DailyWage=$(( $WagePerHrs * $workingHrs ))
-	
-	#StoreDailyWage[(( count++ ))]=$DailyWage
-	totalWage=$(( $DailyWage * $WorkDay ))
-	storeWage["day_$day"]="$DailyWage	$totalWage"
-	#totalMonthWage[(( count++ ))]=$totalWage
+	dailyWage=$(( $WagePerHrs * $workingHrs ))
+
+	totalWage=$(( $dailyWage * $WorkDay ))
+	storeWage["day_$day"]="$dailyWage	$totalWage"
 	Hours=$(( $Hours + $workingHrs))
 	day=$(( $day +1 ))
 done
 
-#echo $Hours
-#echo "${StoreDailyWage[@]}"
-#echo "${totalMonthWage[@]}"
 
 len=${#storeWage[@]}
 echo $len
