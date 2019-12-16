@@ -3,9 +3,7 @@
 
 function getWorkHrs()
 {
-
-employeeCheck=$1
-case $employeeCheck in
+case $1 in
 		$fullDay)
 			 echo $FullWorkHrs
 			 ;;
@@ -16,8 +14,6 @@ case $employeeCheck in
 			echo 0  ;;
 esac
 }
-
-
 
 #######################   Main Method ###################
 
@@ -44,14 +40,12 @@ do
 
 	totalWage=$(( $dailyWage * $WorkDay ))
 	storeWage["day_$day"]="$dailyWage	$totalWage"
-	Hours=$(( $Hours + $workingHrs))
+	hours=$(( $hours + $workingHrs))
 	day=$(( $day +1 ))
 done
 
 
 len=${#storeWage[@]}
-echo $len
-
 for(( i=0; i<$len; i++ ))
 do
 	echo "day $i	 ${storeWage[day_$i]}"
