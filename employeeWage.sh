@@ -5,10 +5,10 @@ function getWorkHrs()
 {
 case $1 in
 		$fullDay)
-			 echo $FullWorkHrs
+			 echo $FULLWORKHRS
 			 ;;
 		$halfDay)
-			 echo $HalfWorkHrs
+			 echo $HALFWORKHRS
 			  ;;
 		*)
 			echo 0  ;;
@@ -17,10 +17,10 @@ esac
 
 #######################   Main Method ###################
 
-WagePerHrs=20
-WorkDay=20
-FullWorkHrs=8
-HalfWorkHrs=4
+WAGEPERHRS=20
+WORKDAY=20
+FULLWORKHRS=8
+HALFWORKHRS=4
 
 hours=0
 day=1
@@ -32,13 +32,13 @@ echo "Welcome to Employee"
 
 declare -A storeWage
 
-while [[ $day -le $workDay && $hours -lt 100 ]]
+while [[ $day -le $WORKDAY && $hours -lt 100 ]]
 do
 	employeeCheck=$(( RANDOM % 3 ))
 	workingHrs="$( getWorkHrs $employeeCheck )"
-	dailyWage=$(( $WagePerHrs * $workingHrs ))
+	dailyWage=$(( $WAGEPERHRS * $workingHrs ))
 
-	totalWage=$(( $dailyWage * $WorkDay ))
+	totalWage=$(( $dailyWage * $WORKDAY ))
 	storeWage["day_$day"]="$dailyWage	$totalWage"
 	hours=$(( $hours + $workingHrs))
 	day=$(( $day +1 ))
